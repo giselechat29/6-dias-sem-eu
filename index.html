@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site romântico com mensagens diárias para 6 dias de saudade.">
+    <meta name="author" content="Gisele Chat">
     <title>6 Dias Sem Mim – Abra Quando Tiver Saudade</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,18 +13,18 @@
         <h1>6 Dias Sem Mim 💌</h1>
         <p class="subtitle">Abra quando sentir saudade...</p>
         <div class="calendar">
-            <div class="day" data-day="22">22<br>❤️</div>
-            <div class="day" data-day="23">23<br>❤️</div>
-            <div class="day" data-day="24">24<br>❤️</div>
-            <div class="day" data-day="25">25<br>❤️</div>
-            <div class="day" data-day="26">26<br>❤️</div>
-            <div class="day" data-day="27">27<br>❤️</div>
+            <div class="day" data-day="22" tabindex="0" aria-label="Mensagem para o dia 22">22<br>❤️</div>
+            <div class="day" data-day="23" tabindex="0" aria-label="Mensagem para o dia 23">23<br>❤️</div>
+            <div class="day" data-day="24" tabindex="0" aria-label="Mensagem para o dia 24">24<br>❤️</div>
+            <div class="day" data-day="25" tabindex="0" aria-label="Mensagem para o dia 25">25<br>❤️</div>
+            <div class="day" data-day="26" tabindex="0" aria-label="Mensagem para o dia 26">26<br>❤️</div>
+            <div class="day" data-day="27" tabindex="0" aria-label="Mensagem para o dia 27">27<br>❤️</div>
         </div>
     </div>
 
-    <div id="message-box" class="hidden">
-        <div id="message-content"></div>
-        <button onclick="closeMessage()">Fechar</button>
+    <div id="message-box" class="hidden" role="dialog" aria-labelledby="message-content" aria-hidden="true">
+        <div id="message-content">Mensagem do dia</div>
+        <button onclick="closeMessage()" aria-label="Fechar mensagem">Fechar</button>
     </div>
 
     <script src="script.js"></script>
