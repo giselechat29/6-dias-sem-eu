@@ -7,21 +7,39 @@ const messages = {
     27: "Último dia longe... finalmente. A saudade me ensinou a valorizar ainda mais cada segundo ao seu lado."
 };
 
-document.querySelectorAll('.day').forEach(day => {
-    day.addEventListener('click', () => {
-        const dayNum = parseInt(day.getAttribute('data-day'));
-        const today = new Date();
-        const currentDay = today.getDate();
+// Função para exibir mensagem
+function showMessage(dayNum) {
+    const messageContent = document.getElementById('message-content');
+    const messageBox = document.getElementById('message-box');
+    messageContent.innerText = messages[dayNum];
+    messageBox.classList.remove('hidden');
+    messageBox.setAttribute('aria-hidden', 'false'); // Acessibilidade
+}
 
-        if (dayNum <= currentDay || currentDay > 27) {
-            document.getElementById('message-content').innerText = messages[dayNum];
-            document.getElementById('message-box').classList.remove('hidden');
-        } else {
-            alert('Essa mensagem só pode ser aberta no dia ' + dayNum + ' de abril 💌');
-        }
-    });
+// Função para fechar mensagem
+function closeMessage() {
+    const messageBox = document.getElementById('message-box');
+    messageBox.classList.add('hidden');
+    messageBox.setAttribute('aria-hidden', 'true'); // Acessibilidade
+}
+
+// Função para lidar com o clique no dia
+function handleDayClick(day) {
+    const dayNum = parseInt(day.getAttribute('data-day'));
+    const today = new Date();
+    const currentDay = today.getDate();
+
+    if (dayNum <= currentDay || currentDay > 27) {
+        showMessage(dayNum);
+    } else {
+        alert(`Essa mensagem só pode ser aberta no dia ${dayNum} de abril 💌`);
+    }
+}
+
+// Adiciona eventos aos dias
+document.querySelectorAll('.day').forEach(day => {
+    day.addEventListener('click', () => handleDayClick(day));
 });
 
-function closeMessage() {
-    document.getElementById('message-box').classList.add('hidden');
-}
+// Adiciona um evento ao botão de fechar a mensagem
+document.getElementById('close-button').addEventListener('click', closeMessage);
